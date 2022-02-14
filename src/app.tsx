@@ -11,12 +11,14 @@ import Settings from "./molecules/Settings";
 import * as ds from "./ds";
 import { useEffect, useState } from "preact/hooks";
 
-import validWords from "./ds/words.json";
-
 export const trie = new ds.Trie();
-(validWords as any).words.map((word: string) => {
-  trie.insert(word);
-});
+fetch("words.json")
+  .then((response) => response.json())
+  .then((validWords) => {
+    (validWords as any).words.map((word: string) => {
+      trie.insert(word);
+    });
+  });
 
 const grid = new ds.Grid();
 const hardcodedStartDate = new Date("2022-02-14T00:00:00");
