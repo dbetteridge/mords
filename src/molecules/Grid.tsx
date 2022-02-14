@@ -113,7 +113,6 @@ const createOrParseTree = (state: State, setState: any) => {
   const tree = state.tree ?? new ds.Tree(state.tileBag[state.selectedTilePos]);
 
   tree.parseTree([], state.grid);
-  console.log(state.tree?.words);
   setState({
     ...state,
     selectedTilePos: -1,

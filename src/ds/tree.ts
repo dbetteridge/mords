@@ -45,8 +45,6 @@ export class Tree {
         }
       });
     });
-
-    console.log(this.words);
   }
 
   commonRow(word: Tile[]) {
