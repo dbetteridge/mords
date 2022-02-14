@@ -21,7 +21,7 @@ fetch("words.json")
   });
 
 const grid = new ds.Grid();
-const hardcodedStartDate = new Date("2022-02-14T00:00:00");
+const hardcodedStartDate = new Date("2022-02-14T00:00:00+00:00");
 
 export type State = {
   tileBag: ds.Tile[];
