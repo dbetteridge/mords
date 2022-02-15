@@ -21,7 +21,6 @@ fetch("words.json")
   });
 
 const grid = new ds.Grid();
-const hardcodedStartDate = new Date("2022-02-14T00:00:00+00:00");
 
 export type State = {
   tileBag: ds.Tile[];
@@ -36,6 +35,16 @@ export type State = {
   day: string;
 };
 
+const getDay = () => {
+  const today = new Date().getTime();
+  const hardcodedStartDate = new Date("2022-02-13T00:00:00+00:00");
+  const startDate = hardcodedStartDate.getTime();
+  const diff = today - startDate;
+  const day = diff / (1000 * 60 * 60 * 24);
+
+  return day.toFixed(0);
+};
+
 export function App() {
   const [state, setState]: [State, any] = useState({
     grid,
@@ -43,10 +52,7 @@ export function App() {
     tree: undefined,
     inProgress: false,
     words: [],
-    day: (
-      (new Date().getTime() - hardcodedStartDate.getTime()) /
-      (1000 * 60 * 60 * 24)
-    ).toFixed(0),
+    day: getDay(),
     finished: false,
     tileBag: new Array(15).fill({ state: { letter: "" } }),
   });
